@@ -16,9 +16,7 @@ import { TurnedInNot } from '@mui/icons-material';
 export const SideBar = ({ drawerWidth = 240 }) => {
 
   const { displayName } = useSelector( state => state.auth );
-  console.log( displayName );
-
-
+  
   return (
     <Box
         component='nav'

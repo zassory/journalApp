@@ -11,8 +11,6 @@ import {
   Typography 
 } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
-
-
 import { useForm } from '../../hooks';
 import {         
         startGoogleSignIn,
@@ -85,7 +83,11 @@ export const LoginPage = () => {
                   xs={ 12 }                  
                   display={ !!errorMessage ? '':'none' }
                 >
-                  <Alert severity='error'>{ errorMessage }</Alert>
+                  <Alert 
+                    severity='error'
+                    >
+                      { errorMessage }
+                    </Alert>
                 </Grid>
 
                 <Grid item xs={ 12 } sm={ 6 }>

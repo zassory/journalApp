@@ -21,6 +21,8 @@ const formValidations = {
    displayName : [ (value) => value.length >= 1, 'El nombre es obligatorio'],
 }
 
+//------------------------------------------------->
+
 export const RegisterPage = () => {
 
   const { status , errorMessage } = useSelector( state => state.auth );

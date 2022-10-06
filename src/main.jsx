@@ -13,6 +13,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <JournalApp />
       </BrowserRouter>
-    </Provider>    
+    </Provider>
   //</React.StrictMode>
 )
