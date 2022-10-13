@@ -17,7 +17,7 @@ export const JournalPage = () => {
 
   const onClickNewNote = () => {
     dispatch (startNewNote());    
-  }
+  }  
   
 
   return (
@@ -25,7 +25,7 @@ export const JournalPage = () => {
             
       {/**Al principio es nulo y con eso lo transformamos a booleano */}
       {
-        (!!active)
+        (!!active) //Si active es false Note
           ? <NoteView />
           : <NothingSelectedView />
       }

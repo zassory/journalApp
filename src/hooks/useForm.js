@@ -2,14 +2,18 @@ import { useEffect, useMemo, useState } from 'react';
 
 export const useForm = ( initialForm = {} , formValidations = {} ) => {
 
-    const [formState, setFormState] = useState( initialForm );        
+    const [formState, setFormState] = useState( initialForm );
     const [formValidation,setFormValidation] = useState({});
 
     //Cada vez que el formState cambia llamo al createValidators
     useEffect(() => {
-        createValidators();    
-
+        createValidators();
     }, [formState]);
+
+    useEffect(() => {
+      setFormState( initialForm );//Si el formulario inicial Cambia se vuelve a llamar esto
+    }, [initialForm]);
+    
 
     const isFormValid = useMemo( () => {
 
