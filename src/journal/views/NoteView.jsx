@@ -5,25 +5,38 @@ import { Button, Grid, TextField, Typography, useFormControl } from '@mui/materi
 import { SaveOutlined } from '@mui/icons-material';
 import { ImageGallery } from '../components';
 
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 import { useForm } from '../../hooks';
 import { setActiveNote, startSaveNote } from '../../store/journal';
+
 
 export const NoteView = () => {
 
   const dispatch = useDispatch();
-  const { active:note } = useSelector( state => state.journal );
+  const { active:note , messageSaved , isSaving } = useSelector( state => state.journal );
 
   const { body , title , date , onInputChange , formState } = useForm( note );
 
+  //Guardo la fecha para que no se dispare ni nada salvo que cambie el date
+  //Y como no cambia queda igual
   const dateString = useMemo( ()=> {
     const newDate = new Date( date );
     return newDate.toUTCString();
   }, [date] );
 
   useEffect(() => {
+    //en mi formState tengo todos mis valores , uno por uno.
     dispatch(setActiveNote( formState ));
   }, [formState]); //Cuando cualquier propiedad del formState cambia
   //Hago el dispatch de una nueva accion
+
+  useEffect(()=> {
+    if( messageSaved.length > 0 ){
+      Swal.fire('Nota actualizada',messageSaved, 'success');
+    }
+  }, [ messageSaved ]);//cuando el messageSaved cambie se dispara este efecto
 
   const onSaveNote = () => {
     dispatch( startSaveNote() );
@@ -40,7 +53,8 @@ export const NoteView = () => {
             </Typography>
         </Grid>
         <Grid item>
-            <Button 
+            <Button
+                disabled={ isSaving }
                 onClick={ onSaveNote }
                 color="primary" 
                 sx={{ padding:2 }}

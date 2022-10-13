@@ -7,12 +7,12 @@ import { setActiveNote } from '../../store/journal';
 
 
 export const SideBarItem = ({ title = '' , body , id , date , imageUrls = [] }) => {
-
+  
   const newTitle = useMemo( ()=> {
       return title.length > 17
        ? title.substring(0,17) + '...'
        : title;
-  }, [ title ]);
+  }, [ title ]);//Se dispara si cambia el title
 
   const dispatch = useDispatch();
   

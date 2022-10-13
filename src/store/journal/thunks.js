@@ -57,11 +57,11 @@ export const startSaveNote = () => {
         const noteToFireStore = { ...note };
         delete noteToFireStore.id;
 
-        console.log(noteToFireStore);
-
         const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }` );
-        await setDoc(docRef, noteToFireStore, { merge: true });
+        await setDoc(docRef, noteToFireStore, { merge: true });//El merge es para que no guarde una nueva,
+        //si no mas bien para que las actualice
 
+        //Y aqui la actualizo en mi store
         dispatch( noteUpdated( note ) );
     }
 }

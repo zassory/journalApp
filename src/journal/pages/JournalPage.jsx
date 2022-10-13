@@ -18,16 +18,15 @@ export const JournalPage = () => {
   const onClickNewNote = () => {
     dispatch (startNewNote());    
   }  
-  
+    
 
   return (
     <JournalLayout>
-            
-      {/**Al principio es nulo y con eso lo transformamos a booleano */}
-      {
-        (!!active) //Si active es false Note
-          ? <NoteView />
-          : <NothingSelectedView />
+                  
+      {        
+        (!!active)
+        ? <NoteView />
+        : <NothingSelectedView />
       }
 
       <IconButton
