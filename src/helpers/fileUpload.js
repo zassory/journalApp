@@ -15,19 +15,15 @@ export const fileUpload = async( file ) => {
             method: 'POST',
             body: formData
         });
-
         
         if(!resp.ok) throw new Error('Dont uploades the image');
         const cloudResp = await resp.json();
         
-
         return cloudResp.secure_url;
 
-    }catch(error){
-        
+    }catch(error){        
         console.log(error.message);
         throw new Error( error.message );
-
     }
 
 }
