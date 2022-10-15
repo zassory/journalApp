@@ -57,14 +57,8 @@ export const journalSlice = createSlice({
             state.active = null;
          },
          deleteNoteById: (state, { payload }) => {
-            state.active = null;
-            //Lo sobreescribe ya filtrado
-            state.notes = state.notes.filter( note => note.id !== payload );            
-            // return {
-            //    ...state,
-            //    active: null,
-            //    notes: state.notes.filter( note => note.id !== payload )
-            // }
+            state.active = null;            
+            state.notes = state.notes.filter( note => note.id !== payload );
          },
        }
 });
